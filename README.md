@@ -13,7 +13,7 @@ sudo apt-get install couchbase-server
 need to have archive folder in the bucket
 do it from an ec2 for reduced latency
 
-
+you may need to export aws credentials
 sudo su -
 
 
