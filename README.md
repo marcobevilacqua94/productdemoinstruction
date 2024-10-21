@@ -68,4 +68,4 @@ CREATE OR REPLACE FUNCTION iso8601(date)
   SUBSTR(date, 11, 8) || 'Z'
 };
 
-use it like this iso8601(t.transactionDate)[0].`$1`
+use it like this iso8601(t.transactionDate)[0].\`$1\`
