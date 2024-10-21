@@ -42,3 +42,28 @@ analytics or columnar links must be created manually
 it takes about 1 hour
 
 on S3 there is a bucket called oldtransactions which contains 10M transactions from 2022 and can be connected to columnar
+
+
+define this function to manage dates in columnar 
+
+CREATE OR REPLACE FUNCTION iso8601(date)
+{
+  SELECT
+  SUBSTR(date, 24, 4) || '-' || 
+  CASE SUBSTR(date, 4, 3)
+    WHEN 'Jan' THEN '01'
+    WHEN 'Feb' THEN '02'
+    WHEN 'Mar' THEN '03'
+    WHEN 'Apr' THEN '04'
+    WHEN 'May' THEN '05'
+    WHEN 'Jun' THEN '06'
+    WHEN 'Jul' THEN '07'
+    WHEN 'Aug' THEN '08'
+    WHEN 'Sep' THEN '09'
+    WHEN 'Oct' THEN '10'
+    WHEN 'Nov' THEN '11'
+    WHEN 'Dec' THEN '12'
+  END || '-' ||
+  SUBSTR(date, 8, 2) || 'T' ||
+  SUBSTR(date, 11, 8) || 'Z'
+};
