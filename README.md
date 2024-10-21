@@ -3,17 +3,22 @@
 creation of backup repository
 
 if you have bad network install on ec2 otherwise can do it locally
+
 install couchbase on ec2 ubuntu
 
 curl -O https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-noarch.deb
+
 sudo dpkg -i ./couchbase-release-1.0-noarch.deb
+
 sudo apt-get update
+
 sudo apt-get install couchbase-server
 
 need to have archive folder in the bucket
 do it from an ec2 for reduced latency
 
 you may need to export aws credentials
+
 sudo su -
 
 
