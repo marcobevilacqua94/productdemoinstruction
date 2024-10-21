@@ -4,7 +4,7 @@ creation of backup repository
 
 if you have bad network install on ec2 otherwise can do it locally
 
-install couchbase on ec2 ubuntu
+install couchbase on ec2 ubuntu, region north virginia
 
 curl -O https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-noarch.deb
 
