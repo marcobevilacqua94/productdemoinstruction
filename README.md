@@ -40,3 +40,5 @@ To restore create a Capella cluster with all services, allow access from anywher
 analytics or columnar links must be created manually
 
 it takes about 1 hour
+
+on S3 there is a bucket called oldtransactions which contains 10M transactions from 2022 and can be connected to columnar
