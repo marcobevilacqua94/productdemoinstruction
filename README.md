@@ -17,10 +17,11 @@ sudo apt-get install couchbase-server
 need to have archive folder in the bucket
 do it from an ec2 for reduced latency
 
-you may need to export aws credentials
+you need to export aws credentials
 
 sudo su -
 
+set up repository line, needed only with first backup
 
 /opt/couchbase/bin/cbbackupmgr config -a s3://demobackupcouchbase/archive --r demo --obj-staging-dir /staging --capella --obj-region us-east-1
 
@@ -30,6 +31,6 @@ To restore create a Capella cluster with all services, allow access from anywher
 
 /opt/couchbase/bin/cbbackupmgr restore --archive s3://demobackupcouchbase/archive --repo demo -c couchbases://cb.hiostdibesgjvau2.cloud.couchbase.com  --obj-region us-east-1 -u app -p Couchbase123! --obj-staging-dir /staging
 
-check if analytics links were correctly created, and eventing functions (it should have)
+analytics or columnar links must be created manually
 
 it takes about 1 hour
