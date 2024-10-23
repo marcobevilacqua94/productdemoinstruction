@@ -61,4 +61,20 @@ GROUP BY month
 
 ORDER BY month ASC
 
+GET number of transactions made in 2023 per gender and agegroup
+
+SELECT COUNT(t) as transactions, u.gender, ageGroup
+
+FROM transactions t
+
+JOIN users u on TOSTRING(t.userId) = meta(u).id
+
+LET ageGroup = FLOOR(u.age/5) * 5
+
+WHERE DATE_PART_STR(t.transactionDate, 'year') = 2023
+
+GROUP BY u.gender, ageGroup
+
+ORDER BY ageGroup, u.gender DESC
+
 
