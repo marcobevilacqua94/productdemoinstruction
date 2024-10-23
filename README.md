@@ -43,4 +43,20 @@ there are eventing functions to show customers
 
 it takes about 1 hour
 
+ANALYTICS QUERIES
+
+GET aggregate values of all items sold in the first 3 month of 2024
+
+SELECT FLOOR(SUM(p.price * t_p.quantityPurchased)) AS total_price_value, DATE_PART_STR(t.transactionDate, 'month') as month
+
+FROM transactions t, t.purchases t_p
+
+JOIN products p on TOSTRING(t_p.productId) = meta(p).id
+
+WHERE DATE_PART_STR(t.transactionDate, 'month') in [1,2,3]
+
+GROUP BY DATE_PART_STR(t.transactionDate, 'month')
+
+LIMIT 3
+
 
