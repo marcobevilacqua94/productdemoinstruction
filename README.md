@@ -45,18 +45,20 @@ it takes about 1 hour
 
 ANALYTICS QUERIES
 
-GET aggregate values of all items sold in the first 3 month of 2024
+GET aggregated by month values of all items sold 2024 
 
-SELECT FLOOR(SUM(p.price * t_p.quantityPurchased)) AS total_price_value, DATE_PART_STR(t.transactionDate, 'month') as month
+SELECT FLOOR(SUM(p.price * t_p.quantityPurchased)) AS total_price_value, month
 
 FROM transactions t, t.purchases t_p
 
 JOIN products p on TOSTRING(t_p.productId) = meta(p).id
 
-WHERE DATE_PART_STR(t.transactionDate, 'month') in [1,2,3]
+LET month = DATE_PART_STR(t.transactionDate, 'month')
 
-GROUP BY DATE_PART_STR(t.transactionDate, 'month')
+WHERE DATE_PART_STR(t.transactionDate, 'year') = 2024
 
-LIMIT 3
+GROUP BY month
+
+ORDER BY month ASC
 
 
