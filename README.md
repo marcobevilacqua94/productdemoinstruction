@@ -112,5 +112,49 @@ ORDER BY average ASC
 
 LIMIT 100
 
+GET 1000 most bought products of 2023
+
+SELECT p.productName, COUNT(p) as purchases
+
+FROM transactions t, t.purchases tp
+
+JOIN products p on TOSTRING(tp.productId) = meta(p).id
+
+WHERE DATE_PART_STR(t.transactionDate, 'year') = 2023
+
+GROUP BY p.productName
+
+ORDER BY purchases DESC
+
+LIMIT 1000
+
+GET most purchased product of 2023 for ageGroup
+
+WITH cte AS (
+
+SELECT p.productName, COUNT(p) as purchases, ageGroup, ROW_NUMBER() OVER (PARTITION BY ageGroup ORDER BY COUNT(p) DESC) rn
+
+FROM transactions t, t.purchases tp
+
+JOIN products p on TOSTRING(tp.productId) = meta(p).id
+
+JOIN users u ON TOSTRING(t.userId) = meta(u).id
+
+LET ageGroup = FLOOR(u.age / 5) * 5
+
+WHERE DATE_PART_STR(t.transactionDate, 'year') = 2023 
+
+GROUP BY p.productName, ageGroup
+
+ORDER BY ageGroup ASC
+
+)
+
+
+SELECT productName, purchases, ageGroup
+
+FROM cte
+
+WHERE rn = 1
 
 
