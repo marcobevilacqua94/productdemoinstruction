@@ -61,6 +61,7 @@ GROUP BY month
 
 ORDER BY month ASC
 
+
 GET number of transactions made in 2023 per gender and agegroup
 
 SELECT COUNT(t) as transactions, u.gender, ageGroup
@@ -76,5 +77,40 @@ WHERE DATE_PART_STR(t.transactionDate, 'year') = 2023
 GROUP BY u.gender, ageGroup
 
 ORDER BY ageGroup, u.gender DESC
+
+
+GET 100 most rated products of 2023 
+
+SELECT p.productName, COUNT(r) as ratings, ROUND(AVG(r.rating), 3) as average
+
+FROM products p
+
+JOIN ratings r on TOSTRING(r.productId) = meta(p).id
+
+WHERE DATE_PART_STR(r.ratingDate, 'year') = 2023
+
+GROUP BY p.productName
+
+ORDER BY COUNT(r) DESC
+
+LIMIT 100
+
+
+GET 100 worst rated products of 2023
+
+SELECT p.productName, COUNT(r) as ratings, ROUND(AVG(r.rating), 3) as average
+
+FROM products p
+
+JOIN ratings r on TOSTRING(r.productId) = meta(p).id
+
+WHERE DATE_PART_STR(r.ratingDate, 'year') = 2023
+
+GROUP BY p.productName
+
+ORDER BY average ASC
+
+LIMIT 100
+
 
 
