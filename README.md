@@ -91,13 +91,13 @@ ANALYTICS QUERIES
 
 GET aggregated by month values of all items sold 2024 
 
-SELECT FLOOR(SUM(p.price * t_p.quantityPurchased)) AS total_price_value, month
+SELECT FLOOR(SUM(p.price * t_p.quantityPurchased * discount)) AS total_price_value, month
 
 FROM transactions t, t.purchases t_p
 
 JOIN products p on TOSTRING(t_p.productId) = meta(p).id
 
-LET month = DATE_PART_STR(t.transactionDate, 'month')
+LET month = DATE_PART_STR(t.transactionDate, 'month'), discount = 100 - t_p.discountApplied
 
 WHERE DATE_PART_STR(t.transactionDate, 'year') = 2024
 
@@ -213,13 +213,13 @@ DEFAULT NULL
 
 AS
 
-SELECT FLOOR(SUM(p.price * t_p.quantityPurchased)) AS total_price_value, month
+SELECT FLOOR(SUM(p.price * t_p.quantityPurchased * discount)) AS total_price_value, month
 
 FROM transactions t, t.purchases t_p
 
 JOIN products p on TOSTRING(t_p.productId) = meta(p).id
 
-LET month = DATE_PART_STR(t.transactionDate, 'month')
+LET month = DATE_PART_STR(t.transactionDate, 'month'), discount = 100 - t_p.discountApplied
 
 WHERE DATE_PART_STR(t.transactionDate, 'year') = 2024
 
