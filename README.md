@@ -136,17 +136,17 @@ To restore, create a Capella cluster with all services, allow access from anywhe
 ### Indexes 
 These are the indexes present on the cluster. You need to build them by clicking on the little arrow in the index ui.
 The name of the index is autoexplicative on the indexed fields.
-
+`
 adv_ratings_by_uesrId_and_productId
 adv_transactions_by_userId
 adv_users_by_uesrname
 adv_warehouses_by_email
-
+`
 ### Search Index
 The is a search index on the products collection indexing averageRating, numberOfRatings, price and productName fields.
-
+`
 productSearch
-
+`
 You find test queries later in the Operational and Search Queries Part
 
 ## Load Testing
