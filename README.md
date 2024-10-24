@@ -61,7 +61,7 @@ users
 "gender": "Female",
 "age": 24,
 "username": "murray.strosin@gmail.com"
-```json
+```
 
 products
 ```json
@@ -90,7 +90,7 @@ products
         }
       ],
       "supplier": "Mills-Hoeger"
-```json
+```
 
 ratings
 ```json
@@ -98,7 +98,7 @@ ratings
       "ratingDate": "2024-06-22T07:26:57Z",
       "productId": 216738,
       "userId": 2845652
-```json
+```
 
 transactiosn
 ```json
@@ -124,7 +124,7 @@ transactiosn
       "userId": 224644,
       "device": "Desktop",
       "shippingMethod": "Express"
-```json
+```
 
 warehouses
 ```json
@@ -132,7 +132,7 @@ warehouses
       "address": "Apt. 331 678 Keisha Village, Venaberg, UT 05695",
       "phone": "1-307-706-5338 x44299",
       "email": "gretta.dickens@example.com"
-```json
+```
 
 ## Load Testing
 
