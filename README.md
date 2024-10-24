@@ -255,14 +255,18 @@ Create a text file `queries.txt` containing the following:
 {"statement":"select p.productName, ROUND(p.averageRating, 2) as averageRating from productDemo.productDemo.products p USE INDEX(USING FTS) where SEARCH(p.productName, 'table') and p.averageRating > 3 ORDER BY p.averageRating DESC LIMIT 100"}
 {"statement":"select p.productName, p.price, ROUND(p.averageRating, 2) as averageRating from productDemo.productDemo.products p USE INDEX(USING FTS) where SEARCH(p.productName, 'table') and p.averageRating > 3 and p.price < 50 ORDER BY p.price DESC LIMIT 100"}
 ```
-Last 3 queries leverage the search index we have.
-Execute queries:
+Last three queries leverage the search index we have.
+Simulate query and search load on the cluster:
 
 ```bash
-/opt/couchbase/bin/cbc-n1qlback -f queries.txt -u app -P Couchbase123! --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo -t 5
+/opt/couchbase/bin/cbc-n1qlback -f queries.txt -u app -P Couchbase123! --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo -t 5 -v
 ```
-
+- Modify `-t ` for more or less load.
+- The `-v` (verbose) is useful to hide some errors that could happen sometimes and be reported on the console line output
+  
 ## Analytics Queries
+
+You need to create the link for Analytics collection (or Columnar).
 
 ### Monthly Sales in 2024
 
