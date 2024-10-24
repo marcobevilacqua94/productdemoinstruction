@@ -249,3 +249,22 @@ GROUP BY u.gender, ageGroup
 
 ORDER BY ageGroup, u.gender DESC
 
+CREATE ANALYTICS VIEW most_bought_2023 (
+    productName STRING,
+    purchases BIGINT
+)
+DEFAULT NULL
+AS
+SELECT p.productName, COUNT(p) as purchases
+
+FROM transactions t, t.purchases tp
+
+JOIN products p on TOSTRING(tp.productId) = meta(p).id
+
+WHERE DATE_PART_STR(t.transactionDate, 'year') = 2023
+
+GROUP BY p.productName
+
+ORDER BY purchases DESC
+
+LIMIT 1000
