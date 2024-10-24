@@ -272,3 +272,22 @@ GROUP BY p.productName
 ORDER BY purchases DESC
 
 LIMIT 1000
+
+COLUMNAR WRITE BACK TO S3
+
+copy (
+SELECT FLOOR(SUM(p.price * t_p.quantityPurchased * discount)) AS total_price_value, month
+
+FROM transactions t, t.purchases t_p
+
+JOIN products p on TOSTRING(t_p.productId) = meta(p).id
+
+LET month = DATE_PART_STR(t.transactionDate, 'month'), discount = 100 - t_p.discountApplied
+
+WHERE DATE_PART_STR(t.transactionDate, 'year') = 2024
+
+GROUP BY month
+
+ORDER BY month ASC
+) b to columnardemomarco AT s3Link
+PATH("")
