@@ -306,3 +306,8 @@ OVER(
 WITH {
     "compression": "gzip"
 };
+
+
+THEN YOU CAN READ THEM BACK IF YOU HAVE THE COLLECTION LINK ON THE S3 BUCKET 
+
+select * from s3oldtransactions limit 100
