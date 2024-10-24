@@ -7,7 +7,7 @@ This Couchbase demo works with 50M documents regarding an ecommerce system. Tota
 
 ### Installing Couchbase on EC2 (Ubuntu)
 We will use an ec2 to restore a backup with the data on a Capella Cluster.
-NOTICE: You do not need an ec2 if you have good internet connections. You can use cbbackupmgr directly from your machine.
+NOTICE: You do not need an ec2 if you have good internet connection. You can use cbbackupmgr directly from your machine.
 
 Run the following commands to install Couchbase:
 
