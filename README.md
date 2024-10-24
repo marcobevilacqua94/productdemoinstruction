@@ -51,6 +51,42 @@ PUT CLUSTER UNDER LOAD
 
  add -B 1 for less load
 
+OPERATIONAL AND SEARCH QUERIES 
+
+create text file queries.txt
+
+{"statement":"select w.owner, w.phone from productDemo.productDemo.warehouses w where email = 'cecila.schaefer@example.com'"}
+
+{"statement":"select w.owner, w.phone from productDemo.productDemo.warehouses w where email = 'alecia.bode@example.com'"}
+
+{"statement":"select w.owner, w.phone from productDemo.productDemo.warehouses w where email = 'jacinda.schneider@example.com'"}
+
+{"statement":"select meta(u).id, u.age, u.address, u.username from productDemo.productDemo.users u where u.username = 'asuncion.abbott@hotmail.com'"}
+
+{"statement":"select meta(u).id, u.age, u.address, u.username from productDemo.productDemo.users u where u.username = 'babette.blanda@hotmail.com'"}
+
+{"statement":"select meta(u).id, u.age, u.address, u.username from productDemo.productDemo.users u where u.username = 'alecia.abernathy@hotmail.com'"}
+
+{"statement":"select * from productDemo.productDemo.transactions t where t.userId = 442745"}
+
+{"statement":"select t.purchases from productDemo.productDemo.transactions t where t.userId = 400545"}
+
+{"statement":"select t.device, t.paymentMethod from productDemo.productDemo.transactions t where t.userId = 114"}
+
+{"statement":"select * from productDemo.productDemo.ratings r where r.userId = 1140"}
+
+{"statement":"select r.rating, r.ratingDate from productDemo.productDemo.ratings r where r.userId = 150 and r.productId = 288494"}
+
+{"statement":"select r.rating, r.userId from productDemo.productDemo.ratings r where r.userId is not missing and r.productId = 10"}
+
+{"statement":"select * from productDemo.productDemo.products p where SEARCH(p.productName, 'knife')"}
+
+{"statement":"select p.productName from productDemo.productDemo.products p where SEARCH(p.productName, 'marble')"}
+
+{"statement":"select p.productName, ROUND(p.averageRating, 2) as averageRating from productDemo.productDemo.products p where SEARCH(p.productName, 'practical')"}
+
+/opt/couchbase/bin/cbc-n1qlback -f queries.txt -u app -P Couchbase123! --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo -t 64
+
 ANALYTICS QUERIES
 
 GET aggregated by month values of all items sold 2024 
