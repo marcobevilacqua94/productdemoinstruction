@@ -265,7 +265,11 @@ Simulate query and search load on the cluster:
 ```
 - Modify `-t ` for more or less load.
 - The `-v` (verbose) is useful to hide some errors that could happen sometimes and be reported on the console line output.
-  
+
+## XDCR 
+
+XDCR is not directly covered on the demo but you can set it up for instance to copy all the transactions documents of 2023 in an archiviation cluster.The condition would be `DATE_PART_STR(t.transactionDate, "year") = 2023`.
+
 ## Analytics Queries
 
 You need to create the link for Analytics collection (or Columnar).
