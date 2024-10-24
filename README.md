@@ -1,7 +1,7 @@
 
 # Product Demo Instruction
 
-This Couchbase demo contains 50M records with an ecommerce data model, indexes, search indexes and eventing functions. The data can be loaded from an S3 cluster backup. To work well it is recommended to have 3 nodes with at least 8cpu x 16gb ram (32gb ram is better). The demo has a particular focus on the analytics/columnar part.
+This Couchbase demo works with 50M documents regarding an ecommerce system. It has query indexes, search indexes and eventing functions. The data can be loaded from an S3 cluster backup. To work well it is recommended to have 3 nodes with at least 8cpu x 16gb ram (32gb ram is better). Enable all the services. The demo has a particular focus on the analytics/columnar part.
 
 ## Installation
 
