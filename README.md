@@ -420,7 +420,7 @@ LIMIT 1000
 
 Set up a Columnar cluster and link all the collections. You can also create views and connect your BI tools directly to Columnar.
 
-### Write Back Sales Volumnes by Month 2024
+### Write Back Sales Volumes by Month 2024
 
 ```sql
 COPY (
