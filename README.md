@@ -42,9 +42,9 @@ The repository setup is required only for the first backup:
 /opt/couchbase/bin/cbbackupmgr backup --archive s3://demobackupcouchbase/archive --repo demo --obj-staging-dir /staging -c couchbases://cb.kwh9supmzlotmb.cloud.couchbase.com -u app -p Couchbase123! --full-backup --threads 2 --obj-region us-east-1
 ```
  -->
-## Restore Operations (START FROM HERE)
+## Load Data and Configs - Backup Restore Operations
 
-To restore, create a Capella cluster with all services, allow access from anywhere, create the user `app` with password `Couchbase123!`, and create the bucket `productDemo`:
+To restore our S3 backup with the data, create a Capella cluster with all services, allow access from anywhere, create the user `app` with password `Couchbase123!`, and create the bucket `productDemo`:
 
 ```bash
 /opt/couchbase/bin/cbbackupmgr restore --archive s3://demobackupcouchbase/archive --repo demo -c couchbases://cb.hiostdibesgjvau2.cloud.couchbase.com --obj-region us-east-1 -u app -p Couchbase123! --obj-staging-dir /staging
