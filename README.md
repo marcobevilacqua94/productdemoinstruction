@@ -202,3 +202,28 @@ FROM cte
 WHERE rn = 1
 
 
+ANALYTICS VIEWS
+
+CREATE ANALYTICS VIEW sales_by_month_2024(
+    total_price_value BIGINT,
+    month STRING
+)
+
+DEFAULT NULL
+
+AS
+
+SELECT FLOOR(SUM(p.price * t_p.quantityPurchased)) AS total_price_value, month
+
+FROM transactions t, t.purchases t_p
+
+JOIN products p on TOSTRING(t_p.productId) = meta(p).id
+
+LET month = DATE_PART_STR(t.transactionDate, 'month')
+
+WHERE DATE_PART_STR(t.transactionDate, 'year') = 2024
+
+GROUP BY month
+
+ORDER BY month ASC
+
