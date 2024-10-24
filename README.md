@@ -16,7 +16,7 @@ sudo apt-get update
 sudo apt-get install couchbase-server
 ```
 
-Turn to superuser:
+Turn to superuser (not mandatory, but I had issues with permissions using cbbackupmgr and this fixes them):
 
 ```bash
 sudo su -
