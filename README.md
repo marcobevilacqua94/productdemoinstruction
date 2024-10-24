@@ -41,7 +41,7 @@ The repository setup is required only for the first backup:
 ### Create Backup
 
 ```bash
-/opt/couchbase/bin/cbbackupmgr backup --archive s3://demobackupcouchbase/archive --repo demo --obj-staging-dir /staging -c couchbases://cb.kwh9supmzlotmb.cloud.couchbase.com -u app -p Couchbase123! --full-backup --threads 2 --obj-region us-east-1
+/opt/couchbase/bin/cbbackupmgr backup --archive s3://demobackupcouchbase/archive --repo demo --obj-staging-dir /staging -c <capella_connection> -u app -p Couchbase123! --full-backup --threads 2 --obj-region us-east-1
 ```
  -->
 ## Load Data and Configs - Backup Restore Operations
@@ -49,7 +49,7 @@ The repository setup is required only for the first backup:
 To restore our S3 backup with the data, create a Capella cluster with all services, allow access from anywhere, create the user `app` with password `Couchbase123!`, and create the bucket `productDemo`:
 
 ```bash
-/opt/couchbase/bin/cbbackupmgr restore --archive s3://demobackupcouchbase/archive --repo demo -c couchbases://cb.hiostdibesgjvau2.cloud.couchbase.com --obj-region us-east-1 -u app -p Couchbase123! --obj-staging-dir /staging
+/opt/couchbase/bin/cbbackupmgr restore --archive s3://demobackupcouchbase/archive --repo demo -c <capella_connection> --obj-region us-east-1 -u app -p Couchbase123! --obj-staging-dir /staging
 ```
 
 **Note:** It takes about one hourm, Analytics or Columnar links must be created manually.
@@ -228,7 +228,7 @@ function iso8601(date) {
 To simulate k/v load on the cluster:
 
 ```bash
-/opt/couchbase/bin/cbc-pillowfight --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo --username app --password Couchbase123! --collection productDemo.products -B 4
+/opt/couchbase/bin/cbc-pillowfight --spec <capella_connection>/productDemo --username app --password Couchbase123! --collection productDemo.products -B 4
 ```
 
 - Add `-t 4` for more load.
@@ -261,7 +261,7 @@ Last three queries leverage the search index we have.
 Simulate query and search load on the cluster:
 
 ```bash
-/opt/couchbase/bin/cbc-n1qlback -f queries.txt -u app -P Couchbase123! --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo -t 5 -v
+/opt/couchbase/bin/cbc-n1qlback -f queries.txt -u app -P Couchbase123! --spec <capella_connection>/productDemo -t 5 -v
 ```
 - Modify `-t ` for more or less load.
 - The `-v` (verbose) is useful to hide some errors that could happen sometimes and be reported on the console line output.
