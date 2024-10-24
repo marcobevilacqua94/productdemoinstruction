@@ -298,7 +298,7 @@ GROUP BY u.gender, ageGroup
 ORDER BY ageGroup, u.gender DESC;
 ```
 
-### 100 Most Rated Products of 2023
+### 100 Best Rated Products of 2023
 
 ```sql
 SELECT p.productName, COUNT(r) as ratings, ROUND(AVG(r.rating), 3) as average
