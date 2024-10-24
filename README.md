@@ -268,7 +268,7 @@ Simulate query and search load on the cluster:
 
 ## XDCR 
 
-XDCR is not directly covered on the demo but you can set it up for instance to copy all the transactions documents of 2023 in an archiviation cluster.The condition would be `DATE_PART_STR(t.transactionDate, "year") = 2023`.
+XDCR is not directly covered on the demo but you can set it up for instance to copy all the transactions documents of 2023 in an archiviation cluster. The filter would be `DATE_PART_STR(t.transactionDate, "year") = 2023`.
 
 ## Analytics Queries
 
