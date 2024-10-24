@@ -152,7 +152,7 @@ You find test queries later in the Operational and Search Queries Part
 ### Eventing
 There are three eventing functions defined in the cluster. Do not redeploy them as they have already done their job but you can show them
 - dateFormatterRating turns the ratings document date into iso8601 format
-```json
+```javascript
 function OnUpdate(doc, meta) {
     doc["ratingDate"] = iso8601(doc["ratingDate"])
     ratings[meta.id] = doc
@@ -175,7 +175,7 @@ function iso8601(date) {
 }
 ```
 - dateFormatteTransaction turns the transactions document date into iso8601 format
-```json
+```javascript
 function OnUpdate(doc, meta) {
     doc["ratingDate"] = iso8601(doc["ratingDate"])
     ratings[meta.id] = doc
@@ -198,7 +198,7 @@ function iso8601(date) {
 }
 ```
 - updateRatingAverageOnProduct mantains average rating and number of rating info on products documents
-```json
+```javascript
 function OnUpdate(doc, meta) {
     doc["ratingDate"] = iso8601(doc["ratingDate"])
     ratings[meta.id] = doc
