@@ -52,6 +52,88 @@ To restore, create a Capella cluster with all services, allow access from anywhe
 
 **Note:** It takes about one hourm, Analytics or Columnar links must be created manually.
 
+## What is in the cluster 
+This is the simple data model 
+
+users
+```json
+"address": "Suite 290 0406 Kemmer Grove, Balistreriborough, WY 22556-8531",
+"gender": "Female",
+"age": 24,
+"username": "murray.strosin@gmail.com"
+```json
+
+products
+```json
+"price": 28.22,
+"productName": "Incredible Aluminum Bottle",
+      "stocks": [
+        {
+          "warehouseId": 2862,
+          "stockQuantity": 743
+        },
+        {
+          "warehouseId": 5869,
+          "stockQuantity": 611
+        },
+        {
+          "warehouseId": 4202,
+          "stockQuantity": 55
+        },
+        {
+          "warehouseId": 3579,
+          "stockQuantity": 900
+        },
+        {
+          "warehouseId": 396,
+          "stockQuantity": 933
+        }
+      ],
+      "supplier": "Mills-Hoeger"
+```json
+
+ratings
+```json
+"rating": 5,
+      "ratingDate": "2024-06-22T07:26:57Z",
+      "productId": 216738,
+      "userId": 2845652
+```json
+
+transactiosn
+```json
+"paymentMethod": "PayPal",
+      "transactionDate": "2023-12-07T21:40:22Z",
+      "purchases": [
+        {
+          "productId": 805036,
+          "quantityPurchased": 5,
+          "discountApplied": 0
+        },
+        {
+          "productId": 126457,
+          "quantityPurchased": 1,
+          "discountApplied": 0
+        },
+        {
+          "productId": 900152,
+          "quantityPurchased": 2,
+          "discountApplied": 11
+        }
+      ],
+      "userId": 224644,
+      "device": "Desktop",
+      "shippingMethod": "Express"
+```json
+
+warehouses
+```json
+"owner": "Kerry Stroman",
+      "address": "Apt. 331 678 Keisha Village, Venaberg, UT 05695",
+      "phone": "1-307-706-5338 x44299",
+      "email": "gretta.dickens@example.com"
+```json
+
 ## Load Testing
 
 To simulate load on the cluster:
