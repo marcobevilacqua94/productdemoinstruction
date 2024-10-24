@@ -24,11 +24,11 @@ sudo su -
 
 Then export AWS credentials (via export on Linux).
 
-## Backup Operations
+## Backup Operations (NOT NEEDED FOR DEMO - JUST INSTRUCTIONS TO BUILD BACK THE REPO IN EMERGENCY SITUATIONS)
 
 We have to restore a backup saved on S3 to get the data we will work on.
 
-### Create Backup Repository (NOT NEEDED FOR DEMO - JUST INSTRUCTIONS TO BUILD BACK THE REPO IN EMERGENCY SITUATIONS)
+### Create Backup Repository 
 
 The repository setup is required only for the first backup:
 
@@ -36,13 +36,13 @@ The repository setup is required only for the first backup:
 /opt/couchbase/bin/cbbackupmgr config -a s3://demobackupcouchbase/archive --r demo --obj-staging-dir /staging --capella --obj-region us-east-1
 ```
 
-### Create Backup (NOT NEEDED FOR DEMO - JUST INSTRUCTIONS TO BUILD BACK THE BACKUP IN EMERGENCY SITUATIONS)
+### Create Backup
 
 ```bash
 /opt/couchbase/bin/cbbackupmgr backup --archive s3://demobackupcouchbase/archive --repo demo --obj-staging-dir /staging -c couchbases://cb.kwh9supmzlotmb.cloud.couchbase.com -u app -p Couchbase123! --full-backup --threads 2 --obj-region us-east-1
 ```
 
-## Restore Operations (NEEDED FOR DEMO)
+## Restore Operations
 
 To restore, create a Capella cluster with all services, allow access from anywhere, create the user `app` with password `Couchbase123!`, and create the bucket `productDemo`:
 
