@@ -272,7 +272,7 @@ XDCR is not directly covered on the demo but you can set it up for instance to c
 
 ## Analytics Queries
 
-You need to create the link for Analytics collection (or Columnar).
+You need to create the links for Analytics collection (or Columnar).
 
 ### Monthly Sales in 2024
 
@@ -397,7 +397,7 @@ ORDER BY ageGroup, u.gender DESC
 
 ```
 
-### Most Bought 1000 products of 2023
+### 1000 Most Bought products of 2023
 
 ```sql
 CREATE ANALYTICS VIEW most_bought_2023 (
@@ -434,7 +434,7 @@ COPY (
 ) TO columnardemomarco AT s3Link PATH("");
 ```
 
-### Write Back Partitioned by Month Transactions 2023
+### Write Back Partitioned Transactions by Month 2023
 
 ```sql
 COPY (
@@ -450,7 +450,7 @@ OVER (
 };
 ```
 
-### Reading Back Data Partitioned by Month Transactions 2023
+### Reading Back Transactoins Partitioned by Month 2023
 
 If you have the collection link on the S3 bucket, you can read the transactions:
 
