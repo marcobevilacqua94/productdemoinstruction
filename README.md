@@ -291,3 +291,18 @@ GROUP BY month
 ORDER BY month ASC
 ) b to columnardemomarco AT s3Link
 PATH("")
+
+COLUMNAR WRITE BACK OLD TRANSACTIONS PARTITIONATE
+
+copy (
+    SELECT t.*
+    FROM transactions t
+    WHERE DATE_PART_STR(t.transactionDate, 'year') = 2023
+) t1 to columnardemomarco AT s3Link
+PATH("2023/month", month)
+OVER(
+    PARTITION BY TOSTRING(DATE_PART_STR(t1.transactionDate, 'month')) AS month
+)
+WITH {
+    "compression": "gzip"
+};
