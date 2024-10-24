@@ -22,7 +22,7 @@ Turn to superuser (not mandatory, but I had issues with permissions using cbback
 sudo su -
 ```
 
-Then export AWS credentials (via export on Linux).
+Then export AWS credentials (via `export` on Linux).
 <!--
 ## Backup Operations (NOT NEEDED FOR DEMO - INSTRUCTIONS TO BUILD BACK THE REPO IN EMERGENCY SITUATIONS - SKIP)
 
