@@ -1,6 +1,8 @@
 
 # Product Demo Instruction
 
+This Couchbase demo contains 50M records with an ecommerce data model, indexes, search indexes and eventing functions. The data can be loaded from an S3 cluster backup. To work well it is recommended to have 3 nodes with at least 8cpu x 16gb ram (32gb ram is better). The demo has a particular focus on the analytics/columnar part.
+
 ## Installation
 
 ### Installing Couchbase on EC2 (Ubuntu)
@@ -262,7 +264,7 @@ Simulate query and search load on the cluster:
 /opt/couchbase/bin/cbc-n1qlback -f queries.txt -u app -P Couchbase123! --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo -t 5 -v
 ```
 - Modify `-t ` for more or less load.
-- The `-v` (verbose) is useful to hide some errors that could happen sometimes and be reported on the console line output
+- The `-v` (verbose) is useful to hide some errors that could happen sometimes and be reported on the console line output.
   
 ## Analytics Queries
 
