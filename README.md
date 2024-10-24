@@ -49,6 +49,8 @@ PUT CLUSTER UNDER LOAD
 
  add -t 4 for more load
 
+ add -B 1 for less load
+
 ANALYTICS QUERIES
 
 GET aggregated by month values of all items sold 2024 
