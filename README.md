@@ -43,6 +43,12 @@ there are eventing functions to show customers
 
 it takes about 1 hour
 
+PUT CLUSTER UNDER LOAD
+
+ /opt/couchbase/bin/cbc-pillowfight --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo --username app --password Couchbase123! --collection productDemo.products
+
+ add -t 4 for more load
+
 ANALYTICS QUERIES
 
 GET aggregated by month values of all items sold 2024 
