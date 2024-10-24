@@ -24,7 +24,7 @@ sudo su -
 
 Then export AWS credentials (via export on Linux).
 
-## Backup Operations (NOT NEEDED FOR DEMO - JUST INSTRUCTIONS TO BUILD BACK THE REPO IN EMERGENCY SITUATIONS- SKIP)
+## Backup Operations (NOT NEEDED FOR DEMO - INSTRUCTIONS TO BUILD BACK THE REPO IN EMERGENCY SITUATIONS - SKIP)
 
 We have to restore a backup saved on S3 to get the data we will work on.
 
