@@ -225,7 +225,7 @@ function iso8601(date) {
   
 ## Load Testing
 
-To simulate load on the cluster:
+To simulate k/v load on the cluster:
 
 ```bash
 /opt/couchbase/bin/cbc-pillowfight --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo --username app --password Couchbase123! --collection productDemo.products -B 4
