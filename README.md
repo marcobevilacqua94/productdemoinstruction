@@ -45,7 +45,7 @@ it takes about 1 hour
 
 PUT CLUSTER UNDER LOAD
 
- /opt/couchbase/bin/cbc-pillowfight --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo --username app --password Couchbase123! --collection productDemo.products
+ /opt/couchbase/bin/cbc-pillowfight --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo --username app --password Couchbase123! --collection productDemo.products -B 4
 
  add -t 4 for more load
 
@@ -77,7 +77,7 @@ create text file queries.txt
 
 {"statement":"select r.rating, r.ratingDate from productDemo.productDemo.ratings r where r.userId = 150 and r.productId = 288494"}
 
-{"statement":"select r.rating, r.userId from productDemo.productDemo.ratings r where r.userId is not missing and r.productId = 10"}
+{"statement":"select r.rating, r.userId from productDemo.productDemo.ratings r where r.userId = 1541 and r.productId = 111742"}
 
 {"statement":"select * from productDemo.productDemo.products p where SEARCH(p.productName, 'knife')"}
 
@@ -85,7 +85,7 @@ create text file queries.txt
 
 {"statement":"select p.productName, ROUND(p.averageRating, 2) as averageRating from productDemo.productDemo.products p where SEARCH(p.productName, 'practical')"}
 
-/opt/couchbase/bin/cbc-n1qlback -f queries.txt -u app -P Couchbase123! --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo -t 15
+/opt/couchbase/bin/cbc-n1qlback -f queries.txt -u app -P Couchbase123! --spec couchbases://cb.zy7dcemerlfgdi1u.cloud.couchbase.com/productDemo -t 5
 
 ANALYTICS QUERIES
 
