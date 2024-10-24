@@ -150,7 +150,7 @@ The is a search index on the products collection indexing averageRating, numberO
 You find test queries later in the Operational and Search Queries Part
 
 ### Eventing
-There are three eventing functions defined in the cluster. Do not redeploy them as they have already done their job but you can show them
+There are three eventing functions defined in the cluster. Do not redeploy them as they have already done their job but you can show them to customers.
 - dateFormatterRating turns the ratings document date into iso8601 format
 ```javascript
 function OnUpdate(doc, meta) {
