@@ -136,19 +136,91 @@ To restore, create a Capella cluster with all services, allow access from anywhe
 ### Indexes 
 These are the indexes present on the cluster. You need to build them by clicking on the little arrow in the index ui.
 The name of the index is autoexplicative on the indexed fields.  
-`
+
 - adv_ratings_by_uesrId_and_productId  
 - adv_transactions_by_userId  
 - adv_users_by_uesrname  
 - adv_warehouses_by_email
-`
+
 ### Search Index
 The is a search index on the products collection indexing averageRating, numberOfRatings, price and productName fields.  
-`
-productSearch  
-`
+
+- productSearch  
+
 You find test queries later in the Operational and Search Queries Part
 
+### Eventing
+There are three eventing functions defined in the cluster. Do not redeploy them as they have already done their job but you can show them
+- dateFormatterRating turns the ratings document date into iso8601 format
+```json
+function OnUpdate(doc, meta) {
+    doc["ratingDate"] = iso8601(doc["ratingDate"])
+    ratings[meta.id] = doc
+    log("Doc date updated", meta.id);
+}
+
+
+function iso8601(date) {
+    const months = {
+        Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
+        Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12'
+    };
+
+    const year = date.substr(24, 4);
+    const month = months[date.substr(4, 3)];
+    const day = date.substr(8, 2);
+    const time = date.substr(11, 8);
+
+    return `${year}-${month}-${day}T${time}Z`;
+}
+```
+- dateFormatteTransaction turns the transactions document date into iso8601 format
+```json
+function OnUpdate(doc, meta) {
+    doc["ratingDate"] = iso8601(doc["ratingDate"])
+    ratings[meta.id] = doc
+    log("Doc date updated", meta.id);
+}
+
+
+function iso8601(date) {
+    const months = {
+        Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
+        Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12'
+    };
+
+    const year = date.substr(24, 4);
+    const month = months[date.substr(4, 3)];
+    const day = date.substr(8, 2);
+    const time = date.substr(11, 8);
+
+    return `${year}-${month}-${day}T${time}Z`;
+}
+```
+- updateRatingAverageOnProduct mantains average rating and number of rating info on products documents
+```json
+function OnUpdate(doc, meta) {
+    doc["ratingDate"] = iso8601(doc["ratingDate"])
+    ratings[meta.id] = doc
+    log("Doc date updated", meta.id);
+}
+
+
+function iso8601(date) {
+    const months = {
+        Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
+        Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12'
+    };
+
+    const year = date.substr(24, 4);
+    const month = months[date.substr(4, 3)];
+    const day = date.substr(8, 2);
+    const time = date.substr(11, 8);
+
+    return `${year}-${month}-${day}T${time}Z`;
+}
+```
+  
 ## Load Testing
 
 To simulate load on the cluster:
