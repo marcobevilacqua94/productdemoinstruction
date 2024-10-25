@@ -52,7 +52,7 @@ To restore our S3 backup with the data, create a Capella cluster with all servic
 /opt/couchbase/bin/cbbackupmgr restore --archive s3://demobackupcouchbase/archive --repo demo -c <capella_connection> --obj-region us-east-1 -u app -p Couchbase123! --obj-staging-dir /staging
 ```
 
-**Note:** It takes about one hourm, Analytics or Columnar links must be created manually.
+**Note:** It takes about one hour, Analytics or Columnar links must be created manually.
 
 ## What is in the cluster 
 ### This is the simple data model:
