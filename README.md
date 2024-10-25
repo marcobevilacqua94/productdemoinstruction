@@ -236,9 +236,9 @@ function OnUpdate(doc, meta) {
 		product.numberOfRatings = 1
 		product.averageRating = rating
 	} else {
-		var newnumberOfRatings = numberOfRatings + 1
-		var newAverageRating = (numberOfRatings * averageRating + rating) / newnumberOfRatings
-		product.numberOfRatings = newnumberOfRatings
+		var newNumberOfRatings = numberOfRatings + 1
+		var newAverageRating = (numberOfRatings * averageRating + rating) / newNumberOfRatings
+		product.numberOfRatings = newNumberOfRatings
 		product.averageRating = newAverageRating
 	}
 	
