@@ -153,7 +153,7 @@ You find test queries later in the Operational and Search Queries Part
 
 ### Eventing
 There are three eventing functions defined in the cluster. Do not redeploy them as they have already done their job but you can show them to customers.
-- dateFormatterRating turns the ratings document date into iso8601 format
+- dateFormatterRating turns the ratings document date into iso8601 format from "Tue Mar 12 20:27:10 UTC 2024" format
 ```javascript
 function OnUpdate(doc, meta) {
     doc["ratingDate"] = iso8601(doc["ratingDate"])
@@ -176,11 +176,11 @@ function iso8601(date) {
     return `${year}-${month}-${day}T${time}Z`;
 }
 ```
-- dateFormatteTransaction turns the transactions document date into iso8601 format
+- dateFormatteTransaction turns the transactions document date into iso8601 format from "Tue Mar 12 20:27:10 UTC 2024" format
 ```javascript
 function OnUpdate(doc, meta) {
-    doc["ratingDate"] = iso8601(doc["ratingDate"])
-    ratings[meta.id] = doc
+    doc["transactionDate"] = iso8601(doc["transactionDate"])
+    transactions[meta.id] = doc
     log("Doc date updated", meta.id);
 }
 
@@ -199,28 +199,54 @@ function iso8601(date) {
     return `${year}-${month}-${day}T${time}Z`;
 }
 ```
-- updateRatingAverageOnProduct mantains average rating and number of rating info on products documents
+- updateRatingAverageOnProduct mantains average rating and number of ratings info on products documents
 ```javascript
+// Set up the handler function to trigger on insert or update
 function OnUpdate(doc, meta) {
-    doc["ratingDate"] = iso8601(doc["ratingDate"])
-    ratings[meta.id] = doc
-    log("Doc date updated", meta.id);
+
+	var productId = doc.productId;  // Replace with the field name you want to check
+	var rating = doc.rating; 
+	
+	if (!productId) {
+		// If the field does not exist return
+		log("Rating does not contain productId field");
+		return;
+	}
+	
+	if (!rating) {
+		// If the field does not exist return
+		log("Rating does not contain a rating value");
+		return;
+	}
+	
+	
+	// Check if the document with 'fieldToCheck' exists as an ID in the target bucket
+	var product = products[productId];
+
+	if (!product) {
+		// If the document doesn't exist, log the failure
+		log("ProductId '" + productId + "' does not exist as an id in products collection");
+		return;
+	} 
+	
+	var numberOfRatings = product.numberOfRatings
+	var averageRating = product.averageRating
+	
+	if(!numberOfRatings || !averageRating) {
+		product.numberOfRatings = 1
+		product.averageRating = rating
+	} else {
+		var newnumberOfRatings = numberOfRatings + 1
+		var newAverageRating = (numberOfRatings * averageRating + rating) / newnumberOfRatings
+		product.numberOfRatings = newnumberOfRatings
+		product.averageRating = newAverageRating
+	}
+	
+	products[productId] = product
+	
 }
 
 
-function iso8601(date) {
-    const months = {
-        Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
-        Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12'
-    };
-
-    const year = date.substr(24, 4);
-    const month = months[date.substr(4, 3)];
-    const day = date.substr(8, 2);
-    const time = date.substr(11, 8);
-
-    return `${year}-${month}-${day}T${time}Z`;
-}
 ```
   
 ## Load Testing
