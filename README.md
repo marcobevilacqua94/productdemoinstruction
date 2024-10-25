@@ -156,47 +156,47 @@ There are three eventing functions defined in the cluster. Do not redeploy them 
 - dateFormatterRating turns the ratings document date into iso8601 format from "Tue Mar 12 20:27:10 UTC 2024" format
 ```javascript
 function OnUpdate(doc, meta) {
-    doc["ratingDate"] = iso8601(doc["ratingDate"])
-    ratings[meta.id] = doc
-    log("Doc date updated", meta.id);
+	doc["ratingDate"] = iso8601(doc["ratingDate"])
+	ratings[meta.id] = doc
+	log("Doc date updated", meta.id);
 }
 
 
 function iso8601(date) {
-    const months = {
-        Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
-        Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12'
-    };
-
-    const year = date.substr(24, 4);
-    const month = months[date.substr(4, 3)];
-    const day = date.substr(8, 2);
-    const time = date.substr(11, 8);
-
-    return `${year}-${month}-${day}T${time}Z`;
+	const months = {
+		Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
+		Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12'
+	};
+	
+	const year = date.substr(24, 4);
+	const month = months[date.substr(4, 3)];
+	const day = date.substr(8, 2);
+	const time = date.substr(11, 8);
+	
+	return `${year}-${month}-${day}T${time}Z`;
 }
 ```
 - dateFormatteTransaction turns the transactions document date into iso8601 format from "Tue Mar 12 20:27:10 UTC 2024" format
 ```javascript
 function OnUpdate(doc, meta) {
-    doc["transactionDate"] = iso8601(doc["transactionDate"])
-    transactions[meta.id] = doc
-    log("Doc date updated", meta.id);
+	doc["transactionDate"] = iso8601(doc["transactionDate"])
+	transactions[meta.id] = doc
+	log("Doc date updated", meta.id);
 }
 
 
 function iso8601(date) {
-    const months = {
-        Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
-        Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12'
-    };
-
-    const year = date.substr(24, 4);
-    const month = months[date.substr(4, 3)];
-    const day = date.substr(8, 2);
-    const time = date.substr(11, 8);
-
-    return `${year}-${month}-${day}T${time}Z`;
+	const months = {
+		Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
+		Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12'
+	};
+	
+	const year = date.substr(24, 4);
+	const month = months[date.substr(4, 3)];
+	const day = date.substr(8, 2);
+	const time = date.substr(11, 8);
+	
+	return `${year}-${month}-${day}T${time}Z`;
 }
 ```
 - updateRatingAverageOnProduct mantains average rating and number of ratings info on products documents
@@ -208,9 +208,9 @@ function OnUpdate(doc, meta) {
 	var rating = doc.rating; 
 	
 	if (!productId) {
-		// If the field does not exist return
-		log("Rating does not contain productId field");
-		return;
+	// If the field does not exist return
+	log("Rating does not contain productId field");
+	return;
 	}
 	
 	if (!rating) {
