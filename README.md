@@ -457,7 +457,7 @@ COPY (
     WHERE DATE_PART_STR(t.transactionDate, 'year') = 2024
     GROUP BY month
     ORDER BY month ASC
-) TO columnardemomarco AT s3Link PATH("");
+) as t TO columnardemomarco AT s3Link PATH("");
 ```
 
 ### Write Back Partitioned Transactions by Month 2023
@@ -467,7 +467,7 @@ COPY (
     SELECT t.*
     FROM transactions t
     WHERE DATE_PART_STR(t.transactionDate, 'year') = 2023
-) TO columnardemomarco AT s3Link
+) TO columnardemomarco as t AT s3Link
 PATH("2023/month", month)
 OVER (
     PARTITION BY TOSTRING(DATE_PART_STR(t.transactionDate, 'month')) AS month
