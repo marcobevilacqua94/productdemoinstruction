@@ -467,7 +467,7 @@ COPY (
     SELECT t.*
     FROM transactions t
     WHERE DATE_PART_STR(t.transactionDate, 'year') = 2023
-) TO columnardemomarco as t AT s3Link
+) as t TO columnardemomarco AT s3Link
 PATH("2023/month", month)
 OVER (
     PARTITION BY TOSTRING(DATE_PART_STR(t.transactionDate, 'month')) AS month
